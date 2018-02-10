@@ -67,6 +67,9 @@ function randProduct() {
   console.log(i);
   // console.log(prevImages);
   if (i === 25) {
+    allProducts[randIndex1].appearCount --;
+    allProducts[randIndex2].appearCount --;
+    allProducts[randIndex3].appearCount --;
     makeTableHeader();
     makeTableRow();
     images.parentNode.removeChild(images);
@@ -96,6 +99,12 @@ function makeTableRow() {
     var trEl = document.createElement('tr');
     var tdEl = document.createElement('td');
     tdEl.textContent = allProducts[j].name;
+    trEl.appendChild(tdEl);
+    tdEl = document.createElement('td');
+    tdEl.textContent = allProducts[j].clickCount;
+    trEl.appendChild(tdEl);
+    tdEl = document.createElement('td');
+    tdEl.textContent = allProducts[j].appearCount;
     trEl.appendChild(tdEl);
     tally.appendChild(trEl);
   }
