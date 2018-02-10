@@ -37,18 +37,31 @@ imgEl1.addEventListener('click', randProduct);
 imgEl2.addEventListener('click', randProduct);
 imgEl3.addEventListener('click', randProduct);
 
-var usedImages = [];
+// var currentImages = [];
+// var prevImages = [];
+
 // var usedImagesCount = 0;
+var i = 0;
 
 function randProduct() {
+  var currentImages = [];
+
   var randIndex1 = Math.floor(Math.random() * allProducts.length);
   var randIndex2 = Math.floor(Math.random() * allProducts.length);
   var randIndex3 = Math.floor(Math.random() * allProducts.length);
+
   imgEl1.src = allProducts[randIndex1].filepath;
   imgEl2.src = allProducts[randIndex2].filepath;
   imgEl3.src = allProducts[randIndex3].filepath;
-  usedImages.push(imgEl1.src);
-  usedImages.push(imgEl2.src);
-  usedImages.push(imgEl3.src);
+
+  currentImages.push(imgEl1.src);
+  currentImages.push(imgEl2.src);
+  currentImages.push(imgEl3.src);
+  // prevImages.push(currentImages);
+
+  console.log(currentImages);
+  i++;
+  console.log(i);
+  // console.log(prevImages);
 }
 randProduct();
