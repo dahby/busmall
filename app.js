@@ -31,6 +31,7 @@ function productGenerator() {
 }
 productGenerator();
 
+var images = document.getElementById('images');
 var imgEl1 = document.getElementById('product1');
 var imgEl2 = document.getElementById('product2');
 var imgEl3 = document.getElementById('product3');
@@ -39,11 +40,7 @@ imgEl1.addEventListener('click', randProduct);
 imgEl2.addEventListener('click', randProduct);
 imgEl3.addEventListener('click', randProduct);
 
-// var currentImages = [];
-// var prevImages = [];
-
-// var usedImagesCount = 0;
-var i = 0;
+var i = 23;
 
 function randProduct() {
   var currentImages = [];
@@ -70,12 +67,29 @@ function randProduct() {
   console.log(i);
   // console.log(prevImages);
   if (i === 25) {
+    makeTableHeader();
     makeTableRow();
+    images.parentNode.removeChild(images);
   }
 }
 randProduct();
 
 var tally = document.getElementById('tally');
+
+// functions to generate table of results
+
+function makeTableHeader() {
+  var thEl = document.createElement('tr');
+  var trEl = document.createElement('tr');
+  trEl.appendChild(thEl);
+  thEl = document.createElement('th');
+  thEl.textContent = 'Times picked';
+  trEl.appendChild(thEl);
+  thEl = document.createElement('th');
+  thEl.textContent = 'Times shown';
+  trEl.appendChild(thEl);
+  tally.appendChild(trEl);
+}
 
 function makeTableRow() {
   for (var j = 0; j < allProducts.length; j++) {
@@ -86,9 +100,3 @@ function makeTableRow() {
     tally.appendChild(trEl);
   }
 }
-
-// makeTableRow();
-
-// if (i === 2) {
-//   makeTableRow();
-// }
