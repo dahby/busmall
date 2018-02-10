@@ -2,30 +2,32 @@
 
 var allProducts = [];
 
-function Products(name, filepath) {
+function Products(name, filepath, clickCount, appearCount) {
   this.name = name;
   this.filepath = filepath;
+  this.clickCount = clickCount;
+  this.appearCount = appearCount;
   allProducts.push(this);
 }
 
 function productGenerator() {
-  new Products('R2-D2 Bag', 'img/bag.jpg');
-  new Products('Banana Slicer', 'img/banana.jpg');
-  new Products('Bathroom Tablet', 'img/bathroom.jpg');
-  new Products('Toeless Boots', 'img/boots.jpg');
-  new Products('Breakfast All-In-One', 'img/breakfast.jpg');
-  new Products('Meatball Bubble Gum', 'img/bubblegum.jpg');
-  new Products('Uncomfortable Chair', 'img/chair.jpg');
-  new Products('Cthulhu Doll', 'img/cthulhu.jpg');
-  new Products('Dog-Duck Mask', 'img/dog-duck.jpg');
-  new Products('Dragon Meat', 'img/dragon.jpg');
-  new Products('Cutlery Pen Set', 'img/pen.jpg');
-  new Products('Pet Sweep', 'img/pet-sweep.jpg');
-  new Products('Tauntaun Sleeping Bag', 'img/tauntaun.jpg');
-  new Products('Unicorn Meat', 'img/unicorn.jpg');
-  new Products('Tenticle USB', 'img/usb.gif');
-  new Products('Useless Water Can', 'img/water-can.jpg');
-  new Products('Bad Wine Glass', 'img/wine-glass.jpg');
+  new Products('R2-D2 Bag', 'img/bag.jpg', 0, 0);
+  new Products('Banana Slicer', 'img/banana.jpg', 0, 0);
+  new Products('Bathroom Tablet', 'img/bathroom.jpg', 0, 0);
+  new Products('Toeless Boots', 'img/boots.jpg', 0, 0);
+  new Products('Breakfast All-In-One', 'img/breakfast.jpg', 0, 0);
+  new Products('Meatball Bubble Gum', 'img/bubblegum.jpg', 0, 0);
+  new Products('Uncomfortable Chair', 'img/chair.jpg', 0, 0);
+  new Products('Cthulhu Doll', 'img/cthulhu.jpg', 0, 0);
+  new Products('Dog-Duck Mask', 'img/dog-duck.jpg', 0, 0);
+  new Products('Dragon Meat', 'img/dragon.jpg', 0, 0);
+  new Products('Cutlery Pen Set', 'img/pen.jpg', 0, 0);
+  new Products('Pet Sweep', 'img/pet-sweep.jpg', 0, 0);
+  new Products('Tauntaun Sleeping Bag', 'img/tauntaun.jpg', 0, 0);
+  new Products('Unicorn Meat', 'img/unicorn.jpg', 0, 0);
+  new Products('Tenticle USB', 'img/usb.gif', 0, 0);
+  new Products('Useless Water Can', 'img/water-can.jpg', 0, 0);
+  new Products('Bad Wine Glass', 'img/wine-glass.jpg', 0, 0);
 }
 productGenerator();
 
@@ -53,6 +55,10 @@ function randProduct() {
   imgEl1.src = allProducts[randIndex1].filepath;
   imgEl2.src = allProducts[randIndex2].filepath;
   imgEl3.src = allProducts[randIndex3].filepath;
+
+  allProducts[randIndex1].appearCount ++;
+  allProducts[randIndex2].appearCount ++;
+  allProducts[randIndex3].appearCount ++;
 
   currentImages.push(imgEl1.src);
   currentImages.push(imgEl2.src);
