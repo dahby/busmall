@@ -53,11 +53,10 @@ section div img {
   height: 200px;
   margin: 25px 45px;
 }
-/* 
-section div img:last-child {
-  margin-right: 40px;
-} */
 
+section div img:hover {
+  cursor: pointer;
+}
 
 footer {
   width: 900px;

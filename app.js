@@ -33,12 +33,28 @@ var imgEl1 = document.getElementById('product1');
 var imgEl2 = document.getElementById('product2');
 var imgEl3 = document.getElementById('product3');
 
-imgEl1.addEventListener('click', randProduct);
+imgEl1.addEventListener('click', randProduct1);
+imgEl2.addEventListener('click', randProduct2);
+imgEl3.addEventListener('click', randProduct3);
 
-function randProduct() {
+function randProduct1() {
   var randIndex = Math.floor(Math.random() * allProducts.length);
   imgEl1.src = allProducts[randIndex].filepath;
+  // imgEl2.src = allProducts[randIndex].filepath;
+  // imgEl3.src = allProducts[randIndex].filepath;
+}
+function randProduct2() {
+  var randIndex = Math.floor(Math.random() * allProducts.length);
+  // imgEl1.src = allProducts[randIndex].filepath;
   imgEl2.src = allProducts[randIndex].filepath;
+  // imgEl3.src = allProducts[randIndex].filepath;
+}
+function randProduct3() {
+  var randIndex = Math.floor(Math.random() * allProducts.length);
+  // imgEl1.src = allProducts[randIndex].filepath;
+  // imgEl2.src = allProducts[randIndex].filepath;
   imgEl3.src = allProducts[randIndex].filepath;
 }
-randProduct();
+randProduct1();
+randProduct2();
+randProduct3();
