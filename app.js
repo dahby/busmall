@@ -1,11 +1,11 @@
 'use strict';
-var Product;
-Product.allProducts = [];
+
+var allProducts = [];
 
 function Products(name, filepath) {
   this.name = name;
   this.filepath = filepath;
-  Product.allProducts.push(this);
+  allProducts.push(this);
 }
 
 function productGenerator() {
@@ -27,3 +27,18 @@ function productGenerator() {
   new Products('Useless Water Can', 'img/water-can.jpg');
   new Products('Bad Wine Glass', 'img/wine-glass.jpg');
 }
+productGenerator();
+
+var imgEl1 = document.getElementById('product1');
+var imgEl2 = document.getElementById('product2');
+var imgEl3 = document.getElementById('product3');
+
+imgEl1.addEventListener('click', randProduct);
+
+function randProduct() {
+  var randIndex = Math.floor(Math.random() * allProducts.length);
+  imgEl1.src = allProducts[randIndex].filepath;
+  imgEl2.src = allProducts[randIndex].filepath;
+  imgEl3.src = allProducts[randIndex].filepath;
+}
+randProduct();
