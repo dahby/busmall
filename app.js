@@ -33,28 +33,22 @@ var imgEl1 = document.getElementById('product1');
 var imgEl2 = document.getElementById('product2');
 var imgEl3 = document.getElementById('product3');
 
-imgEl1.addEventListener('click', randProduct1);
-imgEl2.addEventListener('click', randProduct2);
-imgEl3.addEventListener('click', randProduct3);
+imgEl1.addEventListener('click', randProduct);
+imgEl2.addEventListener('click', randProduct);
+imgEl3.addEventListener('click', randProduct);
 
-function randProduct1() {
-  var randIndex = Math.floor(Math.random() * allProducts.length);
-  imgEl1.src = allProducts[randIndex].filepath;
-  // imgEl2.src = allProducts[randIndex].filepath;
-  // imgEl3.src = allProducts[randIndex].filepath;
+var usedImages = [];
+// var usedImagesCount = 0;
+
+function randProduct() {
+  var randIndex1 = Math.floor(Math.random() * allProducts.length);
+  var randIndex2 = Math.floor(Math.random() * allProducts.length);
+  var randIndex3 = Math.floor(Math.random() * allProducts.length);
+  imgEl1.src = allProducts[randIndex1].filepath;
+  imgEl2.src = allProducts[randIndex2].filepath;
+  imgEl3.src = allProducts[randIndex3].filepath;
+  usedImages.push(imgEl1.src);
+  usedImages.push(imgEl2.src);
+  usedImages.push(imgEl3.src);
 }
-function randProduct2() {
-  var randIndex = Math.floor(Math.random() * allProducts.length);
-  // imgEl1.src = allProducts[randIndex].filepath;
-  imgEl2.src = allProducts[randIndex].filepath;
-  // imgEl3.src = allProducts[randIndex].filepath;
-}
-function randProduct3() {
-  var randIndex = Math.floor(Math.random() * allProducts.length);
-  // imgEl1.src = allProducts[randIndex].filepath;
-  // imgEl2.src = allProducts[randIndex].filepath;
-  imgEl3.src = allProducts[randIndex].filepath;
-}
-randProduct1();
-randProduct2();
-randProduct3();
+randProduct();
