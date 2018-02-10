@@ -63,5 +63,26 @@ function randProduct() {
   i++;
   console.log(i);
   // console.log(prevImages);
+  if (i === 25) {
+    makeTableRow();
+  }
 }
 randProduct();
+
+var tally = document.getElementById('tally');
+
+function makeTableRow() {
+  for (var j = 0; j < allProducts.length; j++) {
+    var trEl = document.createElement('tr');
+    var tdEl = document.createElement('td');
+    tdEl.textContent = allProducts[j].name;
+    trEl.appendChild(tdEl);
+    tally.appendChild(trEl);
+  }
+}
+
+// makeTableRow();
+
+// if (i === 2) {
+//   makeTableRow();
+// }
