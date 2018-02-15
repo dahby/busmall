@@ -1,6 +1,9 @@
 'use strict';
 
 var allProducts = [];
+var currentImages = [];
+var prevImages = [];
+var clicks = 0;
 
 function Products(name, filepath, clickCount, appearCount) {
   this.name = name;
@@ -31,53 +34,68 @@ function productGenerator() {
 }
 productGenerator();
 
+// Assigning variables to html ids
+
 var images = document.getElementById('images');
 var imgEl1 = document.getElementById('product1');
 var imgEl2 = document.getElementById('product2');
 var imgEl3 = document.getElementById('product3');
+var tally = document.getElementById('tally');
 
 imgEl1.addEventListener('click', randProduct);
 imgEl2.addEventListener('click', randProduct);
 imgEl3.addEventListener('click', randProduct);
 
-var i = 23;
+function randImg() {
+  return Math.floor(Math.random() * allProducts.length);
+}
 
 function randProduct() {
   var currentImages = [];
+  currentImages[0] = randImg();
+  while (currentImages[0] === currentImages[1] || currentImages[0] === currentImages[2] || prevImages.indexOf(currentImages[0]) !== -1) {
+    currentImages[0] = randImg();
+  }
 
-  var randIndex1 = Math.floor(Math.random() * allProducts.length);
-  var randIndex2 = Math.floor(Math.random() * allProducts.length);
-  var randIndex3 = Math.floor(Math.random() * allProducts.length);
+  currentImages[1] = randImg();
+  while (currentImages[1] === currentImages[2] || prevImages.indexOf(currentImages[1]) !== -1) {
+    currentImages[1] = randImg();
+  }
 
-  imgEl1.src = allProducts[randIndex1].filepath;
-  imgEl2.src = allProducts[randIndex2].filepath;
-  imgEl3.src = allProducts[randIndex3].filepath;
+  currentImages[2] = randImg();
+  while (prevImages.indexOf(currentImages[2]) !== -1) {
+    currentImages[2] = randImg();
+  }
+  // var randIndex1 = Math.floor(Math.random() * allProducts.length);
+  // var randIndex2 = Math.floor(Math.random() * allProducts.length);
+  // var randIndex3 = Math.floor(Math.random() * allProducts.length);
 
-  allProducts[randIndex1].appearCount ++;
-  allProducts[randIndex2].appearCount ++;
-  allProducts[randIndex3].appearCount ++;
+  // imgEl1.src = allProducts[randIndex1].filepath;
+  // imgEl2.src = allProducts[randIndex2].filepath;
+  // imgEl3.src = allProducts[randIndex3].filepath;
 
-  currentImages.push(imgEl1.src);
-  currentImages.push(imgEl2.src);
-  currentImages.push(imgEl3.src);
+  // allProducts[randIndex1].appearCount ++;
+  // allProducts[randIndex2].appearCount ++;
+  // allProducts[randIndex3].appearCount ++;
+
+  // currentImages.push(imgEl1.src);
+  // currentImages.push(imgEl2.src);
+  // currentImages.push(imgEl3.src);
   // prevImages.push(currentImages);
 
   console.log(currentImages);
-  i++;
-  console.log(i);
+  clicks++;
   // console.log(prevImages);
-  if (i === 25) {
-    allProducts[randIndex1].appearCount --;
-    allProducts[randIndex2].appearCount --;
-    allProducts[randIndex3].appearCount --;
+  if (clicks === 25) {
+    // allProducts[randIndex1].appearCount --;
+    // allProducts[randIndex2].appearCount --;
+    // allProducts[randIndex3].appearCount --;
     makeTableHeader();
     makeTableRow();
     images.parentNode.removeChild(images);
   }
 }
 randProduct();
-
-var tally = document.getElementById('tally');
 
 // functions to generate table of results
 
