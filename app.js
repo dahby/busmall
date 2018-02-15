@@ -1,7 +1,7 @@
 'use strict';
 
 var allProducts = [];
-var currentImages = [];
+// var currentImages = [];
 var prevImages = [];
 var clicks = 0;
 
@@ -37,14 +37,12 @@ productGenerator();
 // Assigning variables to html ids
 
 var images = document.getElementById('images');
-var imgEl1 = document.getElementById('product1');
-var imgEl2 = document.getElementById('product2');
-var imgEl3 = document.getElementById('product3');
+var pics = [document.getElementById('product1'), document.getElementById('product2'), document.getElementById('product3')];
 var tally = document.getElementById('tally');
 
-imgEl1.addEventListener('click', randProduct);
-imgEl2.addEventListener('click', randProduct);
-imgEl3.addEventListener('click', randProduct);
+// imgEl1.addEventListener('click', randProduct);
+// imgEl2.addEventListener('click', randProduct);
+// imgEl3.addEventListener('click', randProduct);
 
 function randImg() {
   return Math.floor(Math.random() * allProducts.length);
@@ -65,6 +63,13 @@ function randProduct() {
   currentImages[2] = randImg();
   while (prevImages.indexOf(currentImages[2]) !== -1) {
     currentImages[2] = randImg();
+  }
+
+  for(var j = 0; j < 3; j++) {
+    pics[j].src = allProducts[currentImages[j]].filepath;
+    pics[j].id = allProducts[currentImages[j]].name;
+    allProducts[currentImages[j]].appearCount ++;
+    prevImages[j] = currentImages[j];
   }
   // var randIndex1 = Math.floor(Math.random() * allProducts.length);
   // var randIndex2 = Math.floor(Math.random() * allProducts.length);
