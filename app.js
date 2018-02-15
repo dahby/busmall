@@ -89,18 +89,28 @@ function randProduct() {
   // prevImages.push(currentImages);
 
   console.log(currentImages);
-  clicks++;
   // console.log(prevImages);
+}
+
+randProduct();
+
+images.addEventListener('click', handleClick);
+
+function handleClick(event) {
+  clicks++;
+  console.log(clicks);
   if (clicks === 25) {
-    // allProducts[randIndex1].appearCount --;
-    // allProducts[randIndex2].appearCount --;
-    // allProducts[randIndex3].appearCount --;
     makeTableHeader();
     makeTableRow();
     images.parentNode.removeChild(images);
   }
+  for (var k = 0; k < allProducts.length; k++) {
+    if (event.target.id === allProducts[k].name) {
+      allProducts[k].clickCount++;
+    }
+  }
+  randProduct();
 }
-randProduct();
 
 // functions to generate table of results
 
