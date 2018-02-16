@@ -4,6 +4,7 @@
     <title>BusMall Market Research</title>
     <link rel="stylesheet" type="text/css" href="css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
   </head>
   <body>
     <header>
@@ -14,7 +15,7 @@
       <p><em>Instructions:</em> You will be shown three products to choose from. Please click on the image that you would be most interested in buying. You will then be presented with three whole new options to choose from. There will be 25 rounds of choices for you to make.</p>
     </Main>
     <section>
-      <table id="tally"></table>
+      <canvas id="chart" width="500px" height="500px"></canvas>
       <div id="images">
         <img id="product1" src="" alt="">
         <img id="product2" src="" alt="">

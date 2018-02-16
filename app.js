@@ -4,10 +4,9 @@
 
 var allProducts = [];
 var prevImages = [];
-var clicks = 0;
+var clicks = 20;
 var images = document.getElementById('images');
 var pics = [document.getElementById('product1'), document.getElementById('product2'), document.getElementById('product3')];
-var tally = document.getElementById('tally');
 
 // Building constructor function
 
@@ -84,16 +83,17 @@ images.addEventListener('click', handleClick);
 
 function handleClick(event) {
   clicks++;
-  // console.log(clicks);
+  console.log(clicks);
   for (var k = 0; k < allProducts.length; k++) {
     if (event.target.id === allProducts[k].name) {
       allProducts[k].clickCount++;
-      // console.log(allProducts[k].name);
+      console.log(allProducts[k].name);
     }
   }
   if (clicks === 25) {
-    makeTableHeader();
-    makeTableRow();
+    makeChart();
+    // makeTableHeader();
+    // makeTableRow();
     images.parentNode.removeChild(images);
   }
   randProduct();
@@ -101,31 +101,64 @@ function handleClick(event) {
 
 // functions to generate table of results
 
-function makeTableHeader() {
-  var thEl = document.createElement('tr');
-  var trEl = document.createElement('tr');
-  trEl.appendChild(thEl);
-  thEl = document.createElement('th');
-  thEl.textContent = 'Times picked';
-  trEl.appendChild(thEl);
-  thEl = document.createElement('th');
-  thEl.textContent = 'Times shown';
-  trEl.appendChild(thEl);
-  tally.appendChild(trEl);
-}
+// function makeTableHeader() {
+//   var thEl = document.createElement('tr');
+//   var trEl = document.createElement('tr');
+//   trEl.appendChild(thEl);
+//   thEl = document.createElement('th');
+//   thEl.textContent = 'Times picked';
+//   trEl.appendChild(thEl);
+//   thEl = document.createElement('th');
+//   thEl.textContent = 'Times shown';
+//   trEl.appendChild(thEl);
+//   tally.appendChild(trEl);
+// }
 
-function makeTableRow() {
-  for (var j = 0; j < allProducts.length; j++) {
-    var trEl = document.createElement('tr');
-    var tdEl = document.createElement('td');
-    tdEl.textContent = allProducts[j].name;
-    trEl.appendChild(tdEl);
-    tdEl = document.createElement('td');
-    tdEl.textContent = allProducts[j].clickCount;
-    trEl.appendChild(tdEl);
-    tdEl = document.createElement('td');
-    tdEl.textContent = allProducts[j].appearCount;
-    trEl.appendChild(tdEl);
-    tally.appendChild(trEl);
-  }
+// function makeTableRow() {
+//   for (var j = 0; j < allProducts.length; j++) {
+//     var trEl = document.createElement('tr');
+//     var tdEl = document.createElement('td');
+//     tdEl.textContent = allProducts[j].name;
+//     trEl.appendChild(tdEl);
+//     tdEl = document.createElement('td');
+//     tdEl.textContent = allProducts[j].clickCount;
+//     trEl.appendChild(tdEl);
+//     tdEl = document.createElement('td');
+//     tdEl.textContent = allProducts[j].appearCount;
+//     trEl.appendChild(tdEl);
+//     tally.appendChild(trEl);
+//   }
+// }
+
+// Building chart for vote totals
+
+function makeChart() {
+
+  var ctx = document.getElementById('chart').getContext('2d');
+  new Chart(ctx).Bar(myChart);
+
+  var myChart = {
+    type: 'bar',
+    data: {
+      labels: allProducts.name,
+      datasets: [{
+        label: 'Times picked',
+        backgroundColor: 'rgba(255,99,132,0.2)',
+        borderColor: 'rgba(255,99,132,1)',
+        borderWidth: 1,
+        hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+        hoverBorderColor: 'rgba(255,99,132,1)',
+        data: allProducts.clickCount,
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  };
 }
