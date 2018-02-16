@@ -99,56 +99,44 @@ function handleClick(event) {
   randProduct();
 }
 
-// functions to generate table of results
-
-// function makeTableHeader() {
-//   var thEl = document.createElement('tr');
-//   var trEl = document.createElement('tr');
-//   trEl.appendChild(thEl);
-//   thEl = document.createElement('th');
-//   thEl.textContent = 'Times picked';
-//   trEl.appendChild(thEl);
-//   thEl = document.createElement('th');
-//   thEl.textContent = 'Times shown';
-//   trEl.appendChild(thEl);
-//   tally.appendChild(trEl);
-// }
-
-// function makeTableRow() {
-//   for (var j = 0; j < allProducts.length; j++) {
-//     var trEl = document.createElement('tr');
-//     var tdEl = document.createElement('td');
-//     tdEl.textContent = allProducts[j].name;
-//     trEl.appendChild(tdEl);
-//     tdEl = document.createElement('td');
-//     tdEl.textContent = allProducts[j].clickCount;
-//     trEl.appendChild(tdEl);
-//     tdEl = document.createElement('td');
-//     tdEl.textContent = allProducts[j].appearCount;
-//     trEl.appendChild(tdEl);
-//     tally.appendChild(trEl);
-//   }
-// }
-
 // Building chart for vote totals
+// getRandomColor()
+// var prodName = [];
+// var prodVotes = [];
+// var prodShown = [];
+
+// for (var m = 0; m < allProducts.length; m++) {
+//   prodName.push(allProducts[m].name);
+//   // console.log(prodName);
+//   prodVotes.push(allProducts[m].clickCount);
+//   // console.log(prodVotes);
+//   prodShown.push(allProducts[m].appearCount);
+// }
 
 function makeChart() {
 
-  var ctx = document.getElementById('chart').getContext('2d');
-  new Chart(ctx).Bar(myChart);
+  var prodName = [];
+  var prodVotes = [];
+  var prodShown = [];
 
-  var myChart = {
+  for (var m = 0; m < allProducts.length; m++) {
+    prodName.push(allProducts[m].name);
+    // console.log(prodName);
+    prodVotes.push(allProducts[m].clickCount);
+    // console.log(prodVotes);
+    prodShown.push(allProducts[m].appearCount);
+  }
+
+  var ctx = document.getElementById('chart').getContext('2d');
+
+  var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: allProducts.name,
+      labels: prodName,
       datasets: [{
         label: 'Times picked',
+        data: prodVotes,
         backgroundColor: 'rgba(255,99,132,0.2)',
-        borderColor: 'rgba(255,99,132,1)',
-        borderWidth: 1,
-        hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-        hoverBorderColor: 'rgba(255,99,132,1)',
-        data: allProducts.clickCount,
       }]
     },
     options: {
@@ -160,5 +148,5 @@ function makeChart() {
         }]
       }
     }
-  };
+  });
 }
