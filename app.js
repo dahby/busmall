@@ -95,6 +95,8 @@ function handleClick(event) {
     images.removeEventListener('click', handleClick);
     images.parentNode.removeChild(images);
   }
+  var data = JSON.stringify(allProducts);
+  localStorage.setItem('products', data);
   randProduct();
 }
 
@@ -147,3 +149,12 @@ function makeChart() {
   });
 }
 
+// function getLocalStorage() {
+
+//   localStorage.setItem('items', data);
+// }
+(function getLocalStorage() {
+  if (localStorage.products) {
+    var data = localStorage.getItem('products')
+    JSON.parse(data);
+  }});
