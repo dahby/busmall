@@ -92,8 +92,7 @@ function handleClick(event) {
   }
   if (clicks === 25) {
     makeChart();
-    // makeTableHeader();
-    // makeTableRow();
+    images.removeEventListener('click', handleClick);
     images.parentNode.removeChild(images);
   }
   randProduct();
@@ -124,11 +123,11 @@ function makeChart() {
       datasets: [{
         label: 'Times picked',
         data: prodVotes,
-        backgroundColor: 'red',
+        backgroundColor: '#6290C8',
       },{
         label: 'Times shown',
         data: prodShown,
-        backgroundColor: 'black',
+        backgroundColor: '#E66A43',
       }]
     },
     options: {
