@@ -83,11 +83,11 @@ images.addEventListener('click', handleClick);
 
 function handleClick(event) {
   clicks++;
-  console.log(clicks);
+  // console.log(clicks);
   for (var k = 0; k < allProducts.length; k++) {
     if (event.target.id === allProducts[k].name) {
       allProducts[k].clickCount++;
-      console.log(allProducts[k].name);
+      // console.log(allProducts[k].name);
     }
   }
   if (clicks === 25) {
