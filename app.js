@@ -83,13 +83,14 @@ images.addEventListener('click', handleClick);
 
 function handleClick(event) {
   clicks++;
-  // console.log(clicks);
+  console.log(clicks);
   for (var k = 0; k < allProducts.length; k++) {
     if (event.target.id === allProducts[k].name) {
       allProducts[k].clickCount++;
       // console.log(allProducts[k].name);
     }
   }
+
   if (clicks === 25) {
     makeChart();
     images.removeEventListener('click', handleClick);
@@ -105,6 +106,10 @@ function handleClick(event) {
 
 // Building chart for vote totals
 
+if (clicks < 25) {
+  document.getElementById('chart').style.display = 'none';
+}
+
 function makeChart() {
 
   var prodName = [];
@@ -118,7 +123,7 @@ function makeChart() {
     // console.log(prodVotes);
     prodShown.push(allProducts[m].appearCount);
   }
-
+  document.getElementById('chart').style.display = 'block';
   var ctx = document.getElementById('chart').getContext('2d');
 
   var voteChart = new Chart(ctx, {
