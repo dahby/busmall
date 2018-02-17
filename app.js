@@ -95,9 +95,12 @@ function handleClick(event) {
     images.removeEventListener('click', handleClick);
     images.parentNode.removeChild(images);
   }
+  randProduct();
+  // local storage component
   var data = JSON.stringify(allProducts);
   localStorage.setItem('products', data);
-  randProduct();
+  var clickStorage = JSON.stringify(clicks);
+  localStorage.setItem('clicks', clickStorage);
 }
 
 // Building chart for vote totals
@@ -151,10 +154,12 @@ function makeChart() {
 
 // function getLocalStorage() {
 
-//   localStorage.setItem('items', data);
-// }
 (function getLocalStorage() {
   if (localStorage.products) {
-    var data = localStorage.getItem('products')
+    var data = localStorage.getItem('products');
     JSON.parse(data);
+  }
+  if (localStorage.clicks) {
+    var clickStorage = localStorage.getItem('clicks');
+    JSON.parse(clickStorage);
   }});
