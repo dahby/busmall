@@ -4,7 +4,7 @@
 
 var allProducts = [];
 var prevImages = [];
-var clicks = 20;
+var clicks = 0;
 var images = document.getElementById('images');
 var pics = [document.getElementById('product1'), document.getElementById('product2'), document.getElementById('product3')];
 
@@ -100,18 +100,6 @@ function handleClick(event) {
 }
 
 // Building chart for vote totals
-// getRandomColor()
-// var prodName = [];
-// var prodVotes = [];
-// var prodShown = [];
-
-// for (var m = 0; m < allProducts.length; m++) {
-//   prodName.push(allProducts[m].name);
-//   // console.log(prodName);
-//   prodVotes.push(allProducts[m].clickCount);
-//   // console.log(prodVotes);
-//   prodShown.push(allProducts[m].appearCount);
-// }
 
 function makeChart() {
 
@@ -129,24 +117,34 @@ function makeChart() {
 
   var ctx = document.getElementById('chart').getContext('2d');
 
-  var myChart = new Chart(ctx, {
+  var voteChart = new Chart(ctx, {
     type: 'bar',
     data: {
       labels: prodName,
       datasets: [{
         label: 'Times picked',
         data: prodVotes,
-        backgroundColor: 'rgba(255,99,132,0.2)',
+        backgroundColor: 'red',
+      },{
+        label: 'Times shown',
+        data: prodShown,
+        backgroundColor: 'black',
       }]
     },
     options: {
       scales: {
-        yAxes: [{
+        xAxes: [{
           ticks: {
-            beginAtZero: true
+            autoSkip: false,
           }
-        }]
+        }],
+        yAxes: [{
+        }],
+        ticks: {
+          beginAtZero: true,
+        }
       }
     }
   });
 }
+
