@@ -1,0 +1,80 @@
+body {
+  width: 960;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: lightblue;
+  color: darkgreen;
+}
+
+header {
+  width: 800px;
+  font-size: 50px;
+  font-weight: bold;
+  background-color: lightgoldenrodyellow;
+  margin: 25px auto;
+  padding: 25px;
+  text-align: center;
+  border: 5px solid darkgreen;
+}
+
+main {
+  width: 900px;
+  background-color: lightgray;
+  margin: 25px auto;
+  padding: 25px;
+  text-align: center;
+  border: 5px solid darkgreen;
+}
+
+main h3 {
+  font-size: 30px;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+main p {
+  font-size: 20px;
+}
+
+main em {
+  font-weight: bold;
+}
+
+section {
+  display: inline;
+  align-content: center;
+}
+
+canvas{
+  border: 5px solid darkgreen;
+  background-color: lightgray;
+  height: 300px;
+}
+
+section div {
+  width: 900px;
+  border: 5px solid darkgreen;
+  margin: 25px auto;
+  background-color: lightgray;
+  /* padding: 25px; */
+}
+
+section div img {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  margin: 25px 45px;
+}
+
+section div img:hover {
+  cursor: pointer;
+}
+
+footer {
+  width: 900px;
+  border: 5px solid darkgreen;
+  background-color: lightgoldenrodyellow;
+  font-size: 20px;
+  margin: 25px auto;
+  padding: 25px;
+  text-align: center;
+}
